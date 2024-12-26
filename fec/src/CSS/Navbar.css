@@ -1,0 +1,60 @@
+/* Style de la barre de navigation */
+.sidebar {
+  background-color: #09ab47 !important; /* Arrière-plan blanc */
+  position: relative; /* Position fixe pour rester en place */
+  top: 0; /* Aligner en haut */
+  left: 0; /* Aligner à gauche */
+  display: flex; /* Utilisation de flexbox pour le conteneur */
+  flex-direction: column; /* Aligner les éléments en colonne */
+  padding-top: 20px; /* Espacement interne en haut */
+}
+/* Style de la toolbar */
+.toolbar {
+  display: flex; /* Utilisation de Flexbox */
+  justify-content: space-between; /* Espacement entre les éléments */
+  align-items: center; /* Alignement vertical */
+  width: 100%; /* Prendre toute la largeur disponible */
+}
+
+/* Style du titre de la navbar */
+.navbar-title {
+  margin: 0; /* Suppression des marges par défaut */
+  font-size: 1.5rem; /* Taille du texte */
+  font-weight: bold; /* Texte en gras */
+}
+
+/* Style du bouton de connexion */
+.btn-login {
+  font-weight: bold; /* Texte en gras */
+  background-color: transparent; /* Fond transparent */
+  border: none; /* Suppression des bordures */
+  color: rgb(6, 128, 36); /* Couleur du texte */
+  cursor: pointer; /* Curseur de pointeur pour indiquer un clic */
+  padding: 10px; /* Espacement interne */
+  font-size: 1rem; /* Taille du texte */
+}
+
+/* Effet au survol du bouton */
+.btn-login:hover {
+  background-color: rgba(4, 53, 33, 0.2); /* Effet au survol */
+}
+/* Conteneur de l'icône de notification avec badge */
+.notification-container {
+  position: relative;
+}
+
+/* Badge de notification */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
