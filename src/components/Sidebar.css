@@ -4,7 +4,7 @@
   width: 280px;
   height: 100%;
   background: linear-gradient(135deg, #2e7d32, #388e3c);
-  color: white;
+  color: rgb(60, 119, 96);
   padding: 25px;
   display: flex;
   flex-direction: column;

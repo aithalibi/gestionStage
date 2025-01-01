@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@
 h1, p {
   margin: 0 0 10px 0;
 }
-=======
+
 .app-container {
     display: flex;
     font-family: Arial, sans-serif;
@@ -144,5 +144,4 @@ h1, p {
   h1, p {
     margin: 0 0 10px 0;
   }
-  
->>>>>>> f7bbfc1153de5eb6598ef0bb6d68b67a068ed807
+ 

@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import studentImage from '../assets/course.png'; // Importation de l'image
+import studentImage from '../assets/course.png'; // Importing the image
 import './LoginPage.css';
 
 function LoginPage() {
@@ -14,7 +13,7 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.username && credentials.password) {
+    if (credentials.email && credentials.password) {
       navigate('/dashboard');
     } else {
       setError('Veuillez remplir tous les champs');
@@ -36,12 +35,12 @@ function LoginPage() {
           <form onSubmit={handleSubmit}>
             {error && <div className="error-message">{error}</div>}
             <div className="form-group">
-              <label>Nom d'utilisateur</label>
+              <label>Email</label>
               <input
                 type="text"
-                value={credentials.username}
-                onChange={(e) => setCredentials({...credentials, username: e.target.value})}
-                placeholder="Entrez votre nom d'utilisateur"
+                value={credentials.email}
+                onChange={(e) => setCredentials({...credentials, email: e.target.value})}
+                placeholder="Entrez votre email"
                 required
               />
             </div>
@@ -60,28 +59,9 @@ function LoginPage() {
             </button>
           </form>
         </div>
-=======
-import React from 'react';
-import './LoginPage.css';
-
-function LoginPage() {
-  return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Welcome to LoginPage</h2>
-        <form>
-          <input type="text" placeholder="Username" required />
-          <input type="password" placeholder="Password" required />
-          <button type="submit"> login </button>
-        </form>
->>>>>>> f7bbfc1153de5eb6598ef0bb6d68b67a068ed807
       </div>
     </div>
   );
 }
 
-<<<<<<< HEAD
 export default LoginPage;
-=======
-export default LoginPage
->>>>>>> f7bbfc1153de5eb6598ef0bb6d68b67a068ed807
