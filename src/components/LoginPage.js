@@ -1,22 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import studentImage from '../assets/course.png'; // Importing the image
+import studentImage from '../assets/course.png';
+import { login } from '../api';
 import './LoginPage.css';
 
 function LoginPage() {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (credentials.email && credentials.password) {
+    setError('');
+    setIsLoading(true);
+
+    try {
+      if (!credentials.email || !credentials.password) {
+        throw new Error('Veuillez remplir tous les champs');
+      }
+
+      const response = await login(credentials);
+      console.log('Connexion réussie:', response);
+      
+      // Stocker le token dans le localStorage
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.user));
+      
+      // Rediriger vers le dashboard
       navigate('/dashboard');
-    } else {
-      setError('Veuillez remplir tous les champs');
+    } catch (err) {
+      console.error('Erreur de connexion:', err);
+      setError(err.message || 'Erreur de connexion. Vérifiez vos identifiants.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,7 +57,7 @@ function LoginPage() {
             <div className="form-group">
               <label>Email</label>
               <input
-                type="text"
+                type="email"
                 value={credentials.email}
                 onChange={(e) => setCredentials({...credentials, email: e.target.value})}
                 placeholder="Entrez votre email"
@@ -54,8 +74,8 @@ function LoginPage() {
                 required
               />
             </div>
-            <button type="submit" className="login-button">
-              CONNEXION
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? 'Connexion...' : 'Se connecter'}
             </button>
           </form>
         </div>

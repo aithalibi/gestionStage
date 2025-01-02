@@ -1,41 +1,37 @@
 import React from 'react';
-import { ThemeProvider, CssBaseline, Box, Toolbar } from '@mui/material';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { theme } from './themes/theme';
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
 import PFEManagement from './components/PFEManagement';
-import PFAManagement from './components/PFAManagement';
+import theme from './theme';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <Router>
         <Box sx={{ display: 'flex' }}>
-          <Navbar />
+          <CssBaseline />
           <Sidebar />
           <Box
             component="main"
             sx={{
               flexGrow: 1,
               p: 3,
-              backgroundColor: 'background.default',
-              minHeight: '100vh',
+              width: { sm: `calc(100% - 240px)` },
+              ml: { sm: '240px' },
+              bgcolor: 'background.default',
             }}
           >
-            <Toolbar />
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              {/* Redirection par défaut vers le dashboard PFE */}
+              <Route path="/" element={<Navigate to="/pfe" replace />} />
               <Route path="/pfe" element={<PFEManagement />} />
-              <Route path="/pfa" element={<PFAManagement />} />
             </Routes>
           </Box>
         </Box>
-      </ThemeProvider>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
