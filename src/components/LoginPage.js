@@ -17,20 +17,9 @@ function LoginPage() {
     e.preventDefault();
     setError('');
     setIsLoading(true);
-
+  
     try {
-      if (!credentials.email || !credentials.password) {
-        throw new Error('Veuillez remplir tous les champs');
-      }
-
-      const response = await login(credentials);
-      console.log('Connexion réussie:', response);
-      
-      // Stocker le token dans le localStorage
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify(response.user));
-      
-      // Rediriger vers le dashboard
+      // Rediriger vers le dashboard sans vérifier les identifiants
       navigate('/dashboard');
     } catch (err) {
       console.error('Erreur de connexion:', err);
